@@ -1,5 +1,9 @@
 body{
     background-color: greenyellow;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ul{
+    list-style-type: none;
 }
 #inputButton {
     margin-right: 30px;
