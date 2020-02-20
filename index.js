@@ -7,20 +7,20 @@ let storedNotes = Object.entries(window.localStorage).filter(entity => entity[0]
 document.addEventListener('DOMContentLoaded', () => {
 
     itemsList = document.querySelector('.list');
-    inputElement = document.querySelector('#inputField');
+    addButton = document.querySelector('#addButton');
     console.log('storedNotes: ', storedNotes);
     storedNotes.forEach(note => addItemToDom(note[1], itemsList, note[0]));
 
-    // aggiunta di un item tramite input (click su invio tastiera)
-    inputElement.addEventListener('keyup', (event) => {
-        if (event.keyCode === 13) {
+    // aggiunta di un item tramite click del bottone add
+    addButton.addEventListener('click', (event) => {
+        
             const noteId = 'notes-' + Date.now(); // genero ID
-            var text = event.target.value; // testo della nota
+            var text = document.querySelector('#inputField').value; // testo della nota
             addItemToDom(text, itemsList, noteId); // aggiungo un elemento della lista al DOM
             window.localStorage.setItem(noteId, text); // setto al local storage la nuova nota
             storedNotes.push([noteId, text]); // salvo in memoria nel mio array la nuova nota
             text = null;
-        }
+        
     });
 
 
@@ -33,10 +33,9 @@ function addItemToDom(text, list, noteId) {
     el.setAttribute('id', noteId); // aggiungo un id alla nota al DOM (la stessa che ho salvato al local storage ed in memoria)
     el.appendChild(textNode);
     el.classList.add('notepad__item');
-    list.appendChild(el);
+    list.appendChild(el);    
 
     el.addEventListener('click', () => {
-        el.style.color = 'red';
         removeItemFromDom(noteId);
         window.localStorage.removeItem(noteId);
     });
