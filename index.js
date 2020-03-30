@@ -1,7 +1,6 @@
 let itemsList;
 let clearList;
 
-
 let storedNotes = Object.entries(window.localStorage).filter(entity => entity[0].includes('notes-'));
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,32 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         storedNotes = [];
     });
-
-    //Funzione autosave
-
-    /*
-    function getEditor() {
-        var elems = document.getElementsByTagName('input');
-
-        if (elems.length <= 0) {
-            return null;
-        }
-        return elems[0];
-    };
-
-    function restore(noteId) {
-        var saved = window.localStorage.getItem(noteId);
-        var editor = getEditor();
-        if (saved && editor) {
-            editor.value = saved;
-        }
-    };
-
-    restore();
-    */
-
-
-
 
 });
 
