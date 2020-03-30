@@ -1,3 +1,5 @@
+import 'autosave.js';
+
 let itemsList;
 let clearList;
 
